@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Diamondra Randriamihaja</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#0e1a2b;
+      --navy-2:#16263d;
+      --gold:#c6a45b;
+      --gold-soft:#e9d7ae;
+      --bg:#f7f5f0;
+      --white:#ffffff;
+      --text:#233044;
+      --muted:#5c6778;
+      --line:#e6dfd0;
+      --shadow:0 14px 40px rgba(14,26,43,.10);
+      --radius:22px;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:"Inter", sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.7;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .container{
+      width:min(1120px, 92%);
+      margin:0 auto;
+    }
+
+    .serif{
+      font-family:"Cormorant Garamond", serif;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(255,255,255,.9);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav{
+      min-height:74px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      font-family:"Cormorant Garamond", serif;
+      font-size:1.9rem;
+      font-weight:700;
+      color:var(--navy);
+    }
+
+    .brand span{
+      color:var(--gold);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:22px;
+      list-style:none;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a{
+      font-size:.95rem;
+      color:var(--muted);
+      transition:.25s ease;
+    }
+
+    .nav-links a:hover{
+      color:var(--navy);
+    }
+
+    .hero{
+      padding:88px 0 72px;
+      background:
+        linear-gradient(135deg, rgba(198,164,91,.08), rgba(198,164,91,0)),
+        linear-gradient(180deg, #fff, #f7f5f0);
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      text-transform:uppercase;
+      letter-spacing:2px;
+      color:var(--gold);
+      font-size:.8rem;
+      font-weight:700;
+      margin-bottom:14px;
+    }
+
+    h1{
+      font-family:"Cormorant Garamond", serif;
+      font-size:clamp(3rem, 6vw, 5rem);
+      line-height:.95;
+      color:var(--navy);
+      margin-bottom:12px;
+    }
+
+    .hero h2{
+      font-size:1.2rem;
+      font-weight:600;
+      color:var(--muted);
+      margin-bottom:18px;
+    }
+
+    .hero p{
+      max-width:700px;
+      margin-bottom:26px;
+      color:#425066;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:50px;
+      padding:13px 22px;
+      border-radius:999px;
+      font-weight:600;
+      transition:.25s ease;
+    }
+
+    .btn-primary{
+      background:var(--navy);
+      color:#fff;
+      box-shadow:var(--shadow);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn-secondary{
+      border:1px solid #d9d3c5;
+      color:var(--navy);
+      background:#fff;
+    }
+
+    .hero-card{
+      background:var(--white);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-card h3{
+      font-family:"Cormorant Garamond", serif;
+      color:var(--navy);
+      font-size:2rem;
+      margin-bottom:14px;
+    }
+
+    .hero-card ul{
+      list-style:none;
+      display:grid;
+      gap:12px;
+      color:var(--muted);
+    }
+
+    section{
+      padding:70px 0;
+    }
+
+    .section-title-wrap{
+      text-align:center;
+      margin-bottom:34px;
+    }
+
+    .section-title{
+      font-family:"Cormorant Garamond", serif;
+      font-size:clamp(2.2rem, 5vw, 3.5rem);
+      color:var(--navy);
+      margin-bottom:8px;
+    }
+
+    .section-subtitle{
+      max-width:760px;
+      margin:0 auto;
+      color:var(--muted);
+    }
+
+    .about-card,
+    .contact-card{
+      background:var(--white);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:30px;
+      box-shadow:var(--shadow);
+    }
+
+    .about-card p + p{
+      margin-top:12px;
+    }
+
+    .experience-grid{
+      display:grid;
+      gap:20px;
+    }
+
+    .experience-card{
+      background:var(--white);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:26px;
+      box-shadow:var(--shadow);
+      display:grid;
+      grid-template-columns:190px 1fr;
+      gap:24px;
+    }
+
+    .experience-date{
+      color:var(--gold);
+      font-weight:700;
+      font-size:.95rem;
+    }
+
+    .experience-content h3{
+      font-size:1.2rem;
+      color:var(--navy);
+      margin-bottom:4px;
+    }
+
+    .experience-content h4{
+      font-size:1rem;
+      color:var(--muted);
+      font-weight:600;
+      margin-bottom:12px;
+    }
+
+    .experience-content ul{
+      padding-left:18px;
+      color:#465468;
+    }
+
+    .experience-content li + li{
+      margin-top:6px;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+    }
+
+    .info-card{
+      background:var(--white);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+
+    .info-card h3{
+      font-family:"Cormorant Garamond", serif;
+      font-size:2rem;
+      color:var(--navy);
+      margin-bottom:14px;
+    }
+
+    .skills-list,
+    .lang-list,
+    .hobby-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .tag{
+      background:#fbf8f1;
+      border:1px solid #e8e0cf;
+      color:#3f4d63;
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:.92rem;
+      font-weight:500;
+    }
+
+    .formation-item + .formation-item{
+      margin-top:18px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+    }
+
+    .formation-item h4{
+      color:var(--navy);
+      font-size:1.05rem;
+      margin-bottom:4px;
+    }
+
+    .formation-item p{
+      color:var(--muted);
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+      margin-top:22px;
+    }
+
+    .contact-box{
+      background:#fbf8f1;
+      border:1px solid #e8e0cf;
+      border-radius:18px;
+      padding:18px;
+      text-align:center;
+    }
+
+    .contact-box h4{
+      color:var(--navy);
+      margin-bottom:8px;
+      font-size:1rem;
+    }
+
+    .contact-box p,
+    .contact-box a{
+      color:var(--muted);
+      word-break:break-word;
+    }
+
+    .footer{
+      padding:30px 0 40px;
+      text-align:center;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    @media (max-width: 900px){
+      .hero-grid,
+      .grid-2,
+      .contact-grid,
+      .experience-card{
+        grid-template-columns:1fr;
+      }
+
+      .experience-card{
+        gap:14px;
+      }
+    }
+
+    @media (max-width: 640px){
+      .hero{
+        padding:60px 0 50px;
+      }
+
+      section{
+        padding:56px 0;
+      }
+
+      .nav{
+        padding:14px 0;
+      }
+
+      .nav-links{
+        gap:12px;
+        font-size:.9rem;
+      }
+
+      .hero-actions{
+        flex-direction:column;
+      }
+
+      .btn{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container nav">
+      <div class="brand">Diamondra <span>Randriamihaja</span></div>
+      <ul class="nav-links">
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#experience">Expérience</a></li>
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#formation">Formation</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Portfolio professionnel</div>
+        <h1>Diamondra Sombinianina Randriamihaja</h1>
+        <h2>Professionnelle bancaire | Relation client | Développement commercial</h2>
+        <p>
+          Forte de 14 années d’expérience bancaire au sein de BMOI, Diamondra évolue
+          avec une logique d’amélioration continue, de rigueur opérationnelle et de montée
+          en compétences managériales. Son parcours couvre la gestion de portefeuilles
+          clients, l’analyse de crédits, le développement commercial et l’intérim de direction
+          d’agence. :contentReference[oaicite:1]{index=1}
+        </p>
+        <div class="hero-actions">
+          <a href="#experience" class="btn btn-primary">Voir l’expérience</a>
+          <a href="#contact" class="btn btn-secondary">Me contacter</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>Profil résumé</h3>
+        <ul>
+          <li>14 années d’expérience bancaire chez BMOI. :contentReference[oaicite:2]{index=2}</li>
+          <li>Gestion de 750+ clients dont 50 professionnels sur le poste actuel. :contentReference[oaicite:3]{index=3}</li>
+          <li>Gestion antérieure d’un portefeuille de 900+ clients. :contentReference[oaicite:4]{index=4}</li>
+          <li>Montage et suivi de crédits, prospection, fidélisation et conseil financier. :contentReference[oaicite:5]{index=5}</li>
+          <li>Capacité à assurer l’intérim du Directeur d’Agence. :contentReference[oaicite:6]{index=6}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="apropos">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">À propos</h2>
+        <p class="section-subtitle">
+          Une trajectoire construite dans la banque, avec une orientation affirmée vers
+          le management, la performance commerciale et la relation client.
+        </p>
+      </div>
+
+      <div class="about-card">
+        <p>
+          Diamondra poursuit une démarche active de développement de compétences
+          managériales et stratégiques afin d’évoluer vers la fonction de Directeur
+          d’Agence. Son profil associe expertise bancaire, gestion opérationnelle,
+          sens du service, pilotage commercial et capacité à prendre des responsabilités
+          dans un environnement exigeant. :contentReference[oaicite:7]{index=7}
+        </p>
+        <p>
+          Son expérience lui a permis d’intervenir aussi bien sur les opérations internationales,
+          la gestion de clientèle particuliers, que l’accompagnement de clients professionnels,
+          avec une forte culture du résultat et de la qualité de service. :contentReference[oaicite:8]{index=8}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">Expérience</h2>
+        <p class="section-subtitle">
+          Un parcours progressif, du back office au conseil clientèle particuliers et professionnels.
+        </p>
+      </div>
+
+      <div class="experience-grid">
+        <article class="experience-card">
+          <div class="experience-date">Depuis juillet 2024</div>
+          <div class="experience-content">
+            <h3>Conseiller Clientèle Particuliers & Professionnels</h3>
+            <h4>BMOI, Galaxy Andraharo</h4>
+            <ul>
+              <li>Gestion et développement d’un portefeuille de plus de 750 clients, dont 50 professionnels. :contentReference[oaicite:9]{index=9}</li>
+              <li>Prospection, fidélisation, équipement et conseils financiers. :contentReference[oaicite:10]{index=10}</li>
+              <li>Montage et suivi de dossiers de crédit. :contentReference[oaicite:11]{index=11}</li>
+              <li>Assure l’intérim du Directeur d’Agence durant ses absences. :contentReference[oaicite:12]{index=12}</li>
+              <li>Supervision, validation d’opérations et contribution au pilotage de la performance commerciale. :contentReference[oaicite:13]{index=13}</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="experience-card">
+          <div class="experience-date">2016 – juin 2024</div>
+          <div class="experience-content">
+            <h3>Chargée de Clientèle Particuliers</h3>
+            <h4>BMOI, Succursale Antaninarenina</h4>
+            <ul>
+              <li>Gestion d’un portefeuille de plus de 900 clients. :contentReference[oaicite:14]{index=14}</li>
+              <li>Développement commercial et vente de produits bancaires. :contentReference[oaicite:15]{index=15}</li>
+              <li>Analyse et montage de crédits. :contentReference[oaicite:16]{index=16}</li>
+              <li>Gestion des réclamations et suivi qualité. :contentReference[oaicite:17]{index=17}</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="experience-card">
+          <div class="experience-date">2011 – 2016</div>
+          <div class="experience-content">
+            <h3>Opérateur Back Office – Département Commerce International</h3>
+            <h4>BMOI, VDJ Ankorondrano</h4>
+            <ul>
+              <li>Traitement des remises documentaires import. :contentReference[oaicite:18]{index=18}</li>
+              <li>Ordres de transfert et opérations internationales. :contentReference[oaicite:19]{index=19}</li>
+              <li>Gestion des domiciliations et virements permanents. :contentReference[oaicite:20]{index=20}</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="competences">
+    <div class="container grid-2">
+      <div class="info-card">
+        <h3>Compétences</h3>
+        <div class="skills-list">
+          <span class="tag">Gestion de portefeuille clients</span>
+          <span class="tag">Développement commercial</span>
+          <span class="tag">Prospection</span>
+          <span class="tag">Fidélisation</span>
+          <span class="tag">Conseil financier</span>
+          <span class="tag">Montage de crédits</span>
+          <span class="tag">Suivi qualité</span>
+          <span class="tag">Supervision d’opérations</span>
+          <span class="tag">Pilotage commercial</span>
+          <span class="tag">Commerce international</span>
+          <span class="tag">Pack Office</span>
+          <span class="tag">SAGE Commerciale</span>
+          <span class="tag">DELTA</span>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h3>Langues & centres d’intérêt</h3>
+
+        <p style="margin-bottom:10px;"><strong>Langues</strong></p>
+        <div class="lang-list" style="margin-bottom:20px;">
+          <span class="tag">Malagasy — maternelle</span>
+          <span class="tag">Français — courant</span>
+          <span class="tag">Anglais — intermédiaire</span>
+        </div>
+
+        <p style="margin-bottom:10px;"><strong>Hobbies</strong></p>
+        <div class="hobby-list">
+          <span class="tag">Natation</span>
+          <span class="tag">Chorale</span>
+          <span class="tag">Cuisine</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="formation">
+    <div class="container grid-2">
+      <div class="info-card">
+        <h3>Formation</h3>
+
+        <div class="formation-item">
+          <h4>Maîtrise en Gestion — Option Marketing</h4>
+          <p>Université d’Antananarivo / DEGS</p>
+          <p>2011</p>
+        </div>
+
+        <div class="formation-item">
+          <h4>Baccalauréat Série Technologique Tertiaire</h4>
+          <p>Lycée Saint François-Xavier</p>
+          <p>2006</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h3>Positionnement professionnel</h3>
+        <p>
+          Profil confirmé dans l’environnement bancaire, avec une solide expérience terrain
+          et une vision orientée responsabilités, management et stratégie d’agence. :contentReference[oaicite:21]{index=21}
+        </p>
+        <p>
+          Ce portfolio peut servir de base pour une candidature, une présentation professionnelle
+          en ligne, ou une évolution vers un poste de direction d’agence.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">
+          Coordonnées professionnelles extraites du CV.
+        </p>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-grid">
+          <div class="contact-box">
+            <h4>Téléphone</h4>
+            <a href="tel:+261343764826">034 37 648 26</a>
+          </div>
+
+          <div class="contact-box">
+            <h4>Email</h4>
+            <a href="mailto:Diamondra-sombiniaina.randriamihaja@bmoi.mg">Diamondra-sombiniaina.randriamihaja@bmoi.mg</a>
+          </div>
+
+          <div class="contact-box">
+            <h4>Adresse</h4>
+            <p>Lot AF 15 Bis Imanga Sab Nam</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      Portfolio professionnel — Diamondra Randriamihaja
+    </div>
+  </footer>
+
+</body>
+</html>
